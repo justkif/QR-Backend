@@ -16,7 +16,7 @@ module.exports = jwtMiddleware = {
         }
     },
     verifyScanner: async(req, res, next) => {
-        jwtController.verifyRunner(req, res, () => {
+        jwtMiddleware.verifyRunner(req, res, () => {
             if (req.user && ['scanner', 'manager', 'admin'].includes(req.user.role)) {
                 next();
             } else {
@@ -25,7 +25,7 @@ module.exports = jwtMiddleware = {
         });
     },
     verifyManager: async(req, res, next) => {
-        jwtController.verifyRunner(req, res, () => {
+        jwtMiddleware.verifyRunner(req, res, () => {
             if (req.user && ['manager', 'admin'].includes(req.user.role)) {
                 next();
             } else {
@@ -34,7 +34,7 @@ module.exports = jwtMiddleware = {
         });
     },
     verifyAdmin: async(req, res, next) => {
-        jwtController.verifyRunner(req, res, () => {
+        jwtMiddleware.verifyRunner(req, res, () => {
             if (req.user && ['admin'].includes(req.user.role)) {
                 next();
             } else {
