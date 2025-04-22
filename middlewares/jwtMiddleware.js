@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-module.exports = {
+module.exports = jwtMiddleware = {
     verifyRunner: async(req, res, next) => {
         const token = req.headers.token;
         if (token) {
@@ -16,7 +16,7 @@ module.exports = {
         }
     },
     verifyScanner: async(req, res, next) => {
-        this.verifyRunner(req, res, () => {
+        jwtMiddleware.verifyRunner(req, res, () => {
             if (req.user && ['scanner', 'manager', 'admin'].includes(req.user.role)) {
                 next();
             } else {
@@ -25,7 +25,7 @@ module.exports = {
         });
     },
     verifyManager: async(req, res, next) => {
-        this.verifyRunner(req, res, () => {
+        jwtMiddleware.verifyRunner(req, res, () => {
             if (req.user && ['manager', 'admin'].includes(req.user.role)) {
                 next();
             } else {
@@ -34,7 +34,7 @@ module.exports = {
         });
     },
     verifyAdmin: async(req, res, next) => {
-        this.verifyRunner(req, res, () => {
+        jwtMiddleware.verifyRunner(req, res, () => {
             if (req.user && ['admin'].includes(req.user.role)) {
                 next();
             } else {
