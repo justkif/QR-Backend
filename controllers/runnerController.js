@@ -69,10 +69,11 @@ module.exports = {
             if (!await userService.getScan()) {
                 return res.status(403).json('Scanning is temporary turned off by the admin.');
             }
-            const runner = runnerService.getOneById(req.body.runnerId);
+            const runner = await runnerService.getOneById(req.body.runnerId);
             if (!runner) {
                 return res.status(404).json('Runner not found.');
             }
+            console.log(runner);
             if (runner.isPresent) {
                 return res.status(403).json('Runner is already scanned.');
             }
