@@ -32,6 +32,9 @@ module.exports = userController = {
     },
     createOne: async(req, res) => {
         try {
+            if (req.body.role === 'admin') {
+                return res.status(403).json('Cannot create user with admin role.');
+            }
             if (await userService.getOne(req.body.username)) {
                 return res.status(409).json('Username existed.'); 
             }

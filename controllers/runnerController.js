@@ -73,7 +73,6 @@ module.exports = {
             if (!runner) {
                 return res.status(404).json('Runner not found.');
             }
-            console.log(runner);
             if (runner.isPresent) {
                 return res.status(403).json('Runner is already scanned.');
             }
