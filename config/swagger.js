@@ -20,7 +20,9 @@ const options = {
             },
             responses: {
                 status401Error: { description: 'Unauthorized - Token not found' },
-                status403Error: { description: 'Forbidden - Token invalid or no permission' }
+                status403Error: { description: 'Forbidden - Token invalid or no permission' },
+                status404Error: { description: 'Not Found - Item not found' },
+                status409Error: { description: 'Conflict - Duplicate data' }
             }
         },
         security: [{ TokenAuth: [] }]
