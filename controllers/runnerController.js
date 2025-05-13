@@ -53,13 +53,14 @@ module.exports = {
             if (await userService.getOne(req.body.ordinalNumber)) {
                 return res.status(409).json('Username existed.');
             }
-            await userService.createOneByDefaultPassword(req.body.ordinalNumber);
-            res.status(201).json(await runnerService.createOne(
+            const response = await runnerService.createOne(
                 req.body.ordinalNumber,
                 req.body.fullName,
                 req.body.gender,
                 req.body.area
-            ));
+            );
+            await userService.createOneByDefaultPassword(req.body.ordinalNumber);
+            res.status(201).json(response);
         } catch (err) {
             res.status(500).json(err);
         }
