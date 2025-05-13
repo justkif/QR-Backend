@@ -78,4 +78,4 @@ Links
 
 Backend Web-Link: https://qr-backend-adidas.vercel.app
 
-API Doc: 
+API Doc: https://qr-api-docs-adidas.vercel.app
